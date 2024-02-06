@@ -1,4 +1,4 @@
-import 'package:artify/artify_app.dart';
+import 'package:artify/presentation/artify_app.dart';
 import 'package:flutter/material.dart';
 
 void main() {
