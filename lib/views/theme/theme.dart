@@ -1,4 +1,4 @@
-part of 'index.dart';
+part of 'package:artify/views/shared/imports.dart';
 
 class AppTheme {
   static ThemeData getAppTheme() {

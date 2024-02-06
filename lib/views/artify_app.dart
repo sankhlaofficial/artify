@@ -1,4 +1,4 @@
-part of 'views.dart';
+part of 'package:artify/views/shared/imports.dart';
 
 class ArtifyApp extends StatefulWidget {
   const ArtifyApp({super.key});

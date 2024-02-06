@@ -1,4 +1,4 @@
-part of '../../../views.dart';
+part of 'package:artify/views/shared/imports.dart';
 
 class ArtifyHomePage extends StatelessWidget {
   const ArtifyHomePage({super.key});

@@ -1,4 +1,4 @@
-part of 'index.dart';
+part of 'package:artify/views/shared/imports.dart';
 
 class AppColor {
   static const primaryBackgroundColor = Color(0xFFf2f2f5);
