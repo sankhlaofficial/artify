@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+part of '../../../views.dart';
 
 class ArtifyHomePage extends StatelessWidget {
   const ArtifyHomePage({super.key});
@@ -17,7 +16,7 @@ class ArtifyHomePage extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(
               horizontal: responsiveView.isMobile ? size.width * 0.05 : 0,
-              vertical: 24),
+              vertical: AppMeasurements.verticalPaddingLarge),
           child: ResponsiveRowColumn(
             layout: responsiveView.isMobile
                 ? ResponsiveRowColumnType.COLUMN
@@ -26,34 +25,15 @@ class ArtifyHomePage extends StatelessWidget {
             children: [
               const ResponsiveRowColumnItem(
                 rowFlex: 1,
-                child: Text("Artify"),
+                child: Text(Strings.appTitle),
               ),
               if (responsiveView.isMobile)
                 const ResponsiveRowColumnItem(
-                  rowFlex: 1,
-                  child: SizedBox(
-                    height: 16,
-                  ),
+                  child: VerticalSpacer(),
                 ),
-              ResponsiveRowColumnItem(
+              const ResponsiveRowColumnItem(
                 rowFlex: 2,
-                child: SizedBox(
-                  height: 45,
-                  child: TextField(
-                    onChanged: (String? text) {},
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: const Color(0xfff1f1f1),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide: const BorderSide(color: Colors.black),
-                      ),
-                      hintText: "Search for Items",
-                      prefixIcon: const Icon(Icons.search),
-                      prefixIconColor: Colors.black,
-                    ),
-                  ),
-                ),
+                child: SearchBar(),
               ),
             ],
           ),

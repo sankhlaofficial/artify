@@ -49,6 +49,16 @@ class AppTheme {
         bodySmall: GoogleFonts.getFont('Outfit',
             fontSize: 12, color: AppColor.primaryTextColor.withOpacity(0.4)),
       ),
+      inputDecorationTheme: InputDecorationTheme(
+        fillColor: AppColor.inputFillColor,
+        prefixIconColor: AppColor.primaryIconColor,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppMeasurements.borderRadius),
+          borderSide: const BorderSide(
+            color: AppColor.primaryBorderColor,
+          ),
+        ),
+      ),
       iconTheme: const IconThemeData(color: AppColor.PRIMARY),
       textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(

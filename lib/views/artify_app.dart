@@ -1,8 +1,4 @@
-import 'package:artify/views/constants/strings.dart';
-import 'package:artify/views/features/home/view/index.dart';
-import 'package:artify/views/theme/index.dart';
-import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+part of 'views.dart';
 
 class ArtifyApp extends StatefulWidget {
   const ArtifyApp({super.key});
