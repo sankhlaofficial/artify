@@ -1,4 +1,6 @@
-import 'package:artify/presentation/theme/index.dart';
+import 'package:artify/views/constants/strings.dart';
+import 'package:artify/views/features/home/view/index.dart';
+import 'package:artify/views/theme/index.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -14,13 +16,9 @@ class _ArtifyAppState extends State<ArtifyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Artify',
+        title: Strings.appTitle,
         theme: AppTheme.getAppTheme(),
-        home: const Scaffold(
-          body: Center(
-            child: Text("Main app"),
-          ),
-        ),
+        home: const ArtifyHomePage(),
         builder: (context, child) => ResponsiveBreakpoints.builder(
               child: child!,
               breakpoints: [
