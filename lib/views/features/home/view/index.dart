@@ -6,23 +6,57 @@ class ArtifyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
+    ResponsiveBreakpointsData responsiveView =
+        ResponsiveBreakpoints.of(context);
+
     return Scaffold(
         body: Column(
       children: [
-        ResponsiveRowColumn(
-          layout: ResponsiveBreakpoints.of(context).isMobile
-              ? ResponsiveRowColumnType.COLUMN
-              : ResponsiveRowColumnType.ROW,
-          children: const [
-            ResponsiveRowColumnItem(
-              rowFlex: 1,
-              child: Text("Artify"),
-            ),
-            ResponsiveRowColumnItem(
-              rowFlex: 1,
-              child: Text("Search bar"),
-            ),
-          ],
+        Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: responsiveView.isMobile ? size.width * 0.05 : 0,
+              vertical: 24),
+          child: ResponsiveRowColumn(
+            layout: responsiveView.isMobile
+                ? ResponsiveRowColumnType.COLUMN
+                : ResponsiveRowColumnType.ROW,
+            rowMainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const ResponsiveRowColumnItem(
+                rowFlex: 1,
+                child: Text("Artify"),
+              ),
+              if (responsiveView.isMobile)
+                const ResponsiveRowColumnItem(
+                  rowFlex: 1,
+                  child: SizedBox(
+                    height: 16,
+                  ),
+                ),
+              ResponsiveRowColumnItem(
+                rowFlex: 2,
+                child: SizedBox(
+                  height: 45,
+                  child: TextField(
+                    onChanged: (String? text) {},
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: const Color(0xfff1f1f1),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(color: Colors.black),
+                      ),
+                      hintText: "Search for Items",
+                      prefixIcon: const Icon(Icons.search),
+                      prefixIconColor: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ],
     ));
