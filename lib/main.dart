@@ -1,4 +1,4 @@
-import 'package:artify/views/views.dart';
+import 'package:artify/views/shared/imports.dart';
 import 'package:flutter/material.dart';
 
 void main() {
