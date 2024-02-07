@@ -38,6 +38,19 @@ class ArtifyHomePage extends StatelessWidget {
             ],
           ),
         ),
+        VerticalSpacer(
+          heightFactor: responsiveView.isMobile ? 1 : 2,
+        ),
+        SizedBox(
+          height: AppMeasurements.searchBarHeight,
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return const FilterTile();
+              }),
+        )
       ],
     ));
   }

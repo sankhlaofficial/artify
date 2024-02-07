@@ -17,6 +17,7 @@ part 'package:artify/views/artify_app.dart';
 //Home
 
 part 'package:artify/views/features/home/view/index.dart';
+part 'package:artify/views/features/home/view/widgets/filter_tile.dart';
 //Shared
 //Widgets
 part 'package:artify/views/shared/widgets/search_bar.dart';

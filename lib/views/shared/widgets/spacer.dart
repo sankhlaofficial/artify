@@ -1,33 +1,33 @@
 part of 'package:artify/views/shared/imports.dart';
 
 class VerticalSpacer extends StatelessWidget {
-  final double height;
+  final double heightFactor;
 
   const VerticalSpacer({
-    this.height = 16,
+    this.heightFactor = 2,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height,
+      height: 8 * heightFactor,
     );
   }
 }
 
 class HorizontalSpacer extends StatelessWidget {
-  final double width;
+  final double widthFactor;
 
   const HorizontalSpacer({
-    this.width = 16,
+    this.widthFactor = 2,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: width,
+      height: 8 * widthFactor,
     );
   }
 }
