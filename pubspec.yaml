@@ -20,6 +20,7 @@ dependencies:
   #UI Packages
   google_fonts: ^6.1.0
   responsive_framework: ^1.1.1
+  cached_network_image: ^3.3.1
 
 dev_dependencies:
   flutter_test:

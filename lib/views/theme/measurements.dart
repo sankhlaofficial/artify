@@ -4,6 +4,7 @@ class AppMeasurements {
   // Padding
 
   static const verticalPaddingLarge = 24.0;
+  static const horizontalPaddingSmall = 8.0;
   static const allSideContainerPadding = 8.0;
 
   //Margin

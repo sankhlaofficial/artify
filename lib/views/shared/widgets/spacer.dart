@@ -27,7 +27,7 @@ class HorizontalSpacer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 8 * widthFactor,
+      width: 8 * widthFactor,
     );
   }
 }
