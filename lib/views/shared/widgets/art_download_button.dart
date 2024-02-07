@@ -10,6 +10,7 @@ class ArtDownloadButton extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Container(
+        margin: const EdgeInsets.all(AppMeasurements.allSideContainerPadding),
         padding: const EdgeInsets.all(AppMeasurements.allSideContainerPadding),
         decoration: BoxDecoration(
           color: AppColor.iconBackgroundColor,

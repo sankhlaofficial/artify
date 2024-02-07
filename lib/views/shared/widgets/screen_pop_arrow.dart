@@ -10,6 +10,7 @@ class ScreenPopArrow extends StatelessWidget {
     return InkWell(
       onTap: () => Navigator.pop(context),
       child: Container(
+        margin: const EdgeInsets.all(AppMeasurements.allSideContainerPadding),
         padding: const EdgeInsets.all(AppMeasurements.allSideContainerPadding),
         decoration: BoxDecoration(
           color: AppColor.iconBackgroundColor,

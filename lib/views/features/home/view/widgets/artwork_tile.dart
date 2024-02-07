@@ -13,7 +13,9 @@ class ArtworkTile extends StatelessWidget {
       onTap: () => Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => const ArtworkDescriptionPage())),
       child: Container(
-        decoration: BoxDecoration(border: Border.all()),
+        decoration: BoxDecoration(
+            border: Border.all(),
+            borderRadius: BorderRadius.circular(AppMeasurements.borderRadius)),
         child: ResponsiveRowColumn(
           rowMainAxisSize: MainAxisSize.min,
           layout: responsiveView.isMobile
