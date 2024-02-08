@@ -23,6 +23,6 @@ class UnauthorisedException extends AppException {
   UnauthorisedException([message]) : super(message, "Unauthorised Request: ");
 }
 
-class InvalidInputException extends AppException {
-  InvalidInputException([String? message]) : super(message, "Invalid Input: ");
+class InvalidDataException extends AppException {
+  InvalidDataException([String? message]) : super(message, "Invalid Data: ");
 }
