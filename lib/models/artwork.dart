@@ -1,7 +1,7 @@
 class Artwork {
   //id, title,description, author, image,category , link
 
-  final String id;
+  final int id;
   final String title;
   final String description;
   final String author;
@@ -20,12 +20,12 @@ class Artwork {
 
   factory Artwork.fromJson(Map<String, dynamic> json) {
     return Artwork(
-        id: json['id'] as String,
-        title: json['title'] as String,
-        description: json['description'] as String,
-        author: json['author'] as String,
-        image: json['image'] as String,
-        category: json['category'] as String,
-        link: json['link'] as String);
+        id: json['id'],
+        title: json['title'] ?? '',
+        description: json['short_description'] ?? '',
+        author: json['artist_title'] ?? '',
+        image: json['thumbnail'] ?? '',
+        category: json['department_title'] ?? '',
+        link: json['link'] ?? '');
   }
 }

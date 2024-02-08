@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:artify/models/api/app_exception.dart';
 import 'package:artify/models/artwork.dart';
 import 'package:artify/models/services/art_service.dart';
@@ -9,11 +11,17 @@ class ArtworkRepository {
   Future<List<Artwork>> fetchArtList(String value) async {
     try {
       dynamic response = await _artService.getResponse(value);
-      final jsonData = response['results'] as List;
-      if (response.statusCode == 200) {
+
+      log("response is $response");
+      final jsonData = response as List;
+
+      if (response.isNotEmpty) {
         try {
           List<Artwork> artList =
               jsonData.map((tagJson) => Artwork.fromJson(tagJson)).toList();
+
+          log(artList.toString());
+
           return artList;
         } on Exception {
           throw InvalidDataException();
@@ -25,6 +33,7 @@ class ArtworkRepository {
       if (error is BadRequestException || error is UnauthorisedException) {
         rethrow;
       } else {
+        print("fetch data exception $error");
         throw FetchDataException();
       }
     }

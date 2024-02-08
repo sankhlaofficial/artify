@@ -1,5 +1,6 @@
 // -----------------IMPORTS--------------------------
 
+import 'package:artify/models/artwork.dart';
 import 'package:artify/viewmodels/blocs/fetch_artwork/fetch_artwork_bloc.dart';
 import 'package:artify/views/constants/strings.dart';
 import 'package:artify/views/theme/measurements.dart';
@@ -22,6 +23,7 @@ part 'package:artify/views/features/home/view/screens/artwork_description/index.
 
 part 'package:artify/views/features/home/view/screens/index.dart';
 part 'package:artify/views/features/home/view/widgets/artwork_tile.dart';
+part 'package:artify/views/features/home/view/widgets/fetched_artwork_list.dart';
 part 'package:artify/views/features/home/view/widgets/filter_tile.dart';
 part 'package:artify/views/shared/widgets/art_download_button.dart';
 part 'package:artify/views/shared/widgets/cached_image_provider.dart';

@@ -1,11 +1,11 @@
 part of 'package:artify/views/shared/imports.dart';
 
 class ArtworkTile extends StatelessWidget {
-  const ArtworkTile({super.key});
+  const ArtworkTile({super.key, required this.artwork});
+  final Artwork artwork;
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     ResponsiveBreakpointsData responsiveView =
         ResponsiveBreakpoints.of(context);
 
@@ -61,7 +61,7 @@ class ArtworkTile extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    "The starry night",
+                    artwork.title,
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   const VerticalSpacer(

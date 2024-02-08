@@ -26,3 +26,7 @@ class UnauthorisedException extends AppException {
 class InvalidDataException extends AppException {
   InvalidDataException([String? message]) : super(message, "Invalid Data: ");
 }
+
+class UnknownException extends AppException {
+  UnknownException([String? message]) : super(message, "Unknown error: ");
+}

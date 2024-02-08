@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:artify/models/api/app_exception.dart';
 import 'package:artify/models/artwork.dart';
 import 'package:artify/models/artwork_repository.dart';
@@ -20,8 +22,10 @@ class FetchArtworkBloc extends Bloc<FetchArtworkEvent, FetchArtworkState> {
         Either<AppException, List<Artwork>> allArtworks =
             await artworkRepository.fetchArtworkFromApi(artworkApi);
 
+        log('all Artworks are $allArtworks');
+
         allArtworks.fold((failure) => emit(HomePageError(failure)),
-            (artList) => HomePageSuccess(artList));
+            (artList) => emit(HomePageSuccess(artList)));
       }
     });
   }
