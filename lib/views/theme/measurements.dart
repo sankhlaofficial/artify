@@ -6,6 +6,7 @@ class AppMeasurements {
   static const verticalPaddingLarge = 24.0;
   static const horizontalPaddingSmall = 8.0;
   static const allSideContainerPadding = 8.0;
+  static const allSideScreenPadding = 16.0;
 
   //Margin
 

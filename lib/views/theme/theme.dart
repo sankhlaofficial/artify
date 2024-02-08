@@ -40,7 +40,7 @@ class AppTheme {
             fontSize: 12, color: AppColor.primaryTextColor.withOpacity(0.4)),
       ),
       inputDecorationTheme: InputDecorationTheme(
-        fillColor: AppColor.inputFillColor,
+        fillColor: AppColor.boxFillColor,
         prefixIconColor: AppColor.primaryIconColor,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppMeasurements.borderRadius),
