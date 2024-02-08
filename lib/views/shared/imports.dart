@@ -1,10 +1,12 @@
 // -----------------IMPORTS--------------------------
 
+import 'package:artify/viewmodels/blocs/fetch_artwork/fetch_artwork_bloc.dart';
 import 'package:artify/views/constants/strings.dart';
 import 'package:artify/views/theme/measurements.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 //App
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 //Theme
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
