@@ -10,9 +10,3 @@ class ApplyFilters extends FetchArtworkEvent {
 
   ApplyFilters({this.filtersApplied = const {}});
 }
-
-class RemoveFilters extends FetchArtworkEvent {
-  final Set<String> removeFilters;
-
-  RemoveFilters({this.removeFilters = const {}});
-}

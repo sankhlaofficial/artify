@@ -7,22 +7,31 @@ class FilterTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('applied filter list is ' +
-        context.read<FetchArtworkBloc>().state.appliedFilterList.toString());
-
     bool isSelected = context
         .read<FetchArtworkBloc>()
         .state
         .appliedFilterList
         .contains(filterItem);
 
-    print('isSelected is $isSelected');
-
     return InkWell(
       onTap: () {
-        context
-            .read<FetchArtworkBloc>()
-            .add(ApplyFilters(filtersApplied: {filterItem}));
+        if (isSelected) {
+          print('selected');
+          Set<String> newFilterList =
+              context.read<FetchArtworkBloc>().state.appliedFilterList;
+
+          newFilterList.remove(filterItem);
+
+          context
+              .read<FetchArtworkBloc>()
+              .add(ApplyFilters(filtersApplied: newFilterList));
+        } else {
+          print('not selected');
+          context.read<FetchArtworkBloc>().add(ApplyFilters(filtersApplied: {
+                filterItem,
+                ...context.read<FetchArtworkBloc>().state.appliedFilterList
+              }));
+        }
       },
       child: Container(
         margin: const EdgeInsets.symmetric(
