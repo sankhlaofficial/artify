@@ -1,17 +1,18 @@
 part of 'package:artify/views/shared/imports.dart';
 
 class ArtworkDescriptionPage extends StatelessWidget {
-  const ArtworkDescriptionPage({super.key});
+  const ArtworkDescriptionPage({super.key, required this.artwork});
+  final Artwork artwork;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           image: DecorationImage(
         fit: BoxFit.cover,
-        image: CachedNetworkImageProvider(
-            'https://th.bing.com/th/id/OIP.5W9ozBJ-JwLYF1HWu4EQjwHaGI?rs=1&pid=ImgDetMain'), // a network image or a local image here,
+        image: CachedNetworkImageProvider(artwork.artworkImage
+            .imageDisplayUrl), // a network image or a local image here,
       )),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -33,7 +34,7 @@ class ArtworkDescriptionPage extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "The starry Night",
+                    artwork.title,
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge
@@ -51,7 +52,7 @@ class ArtworkDescriptionPage extends StatelessWidget {
                             BorderRadius.circular(AppMeasurements.borderRadius),
                         border: Border.all()),
                     child: Text(
-                      "Painting",
+                      artwork.category,
                       style: Theme.of(context)
                           .textTheme
                           .labelSmall
@@ -64,7 +65,7 @@ class ArtworkDescriptionPage extends StatelessWidget {
                 heightFactor: 1,
               ),
               Text(
-                "   -Vincent Van Gogh",
+                "   -${artwork.author}",
                 style: Theme.of(context)
                     .textTheme
                     .titleMedium
@@ -74,7 +75,7 @@ class ArtworkDescriptionPage extends StatelessWidget {
                 heightFactor: 2,
               ),
               Text(
-                "The starry night is an oil canvas painting by Dutch post colonial master Sir lorf irwin, . IT ADAMNSDMBAS fdsdfnasdsadnasdsandjkasdsadjkas ksjdsadjkasdsjadjsaj jkasdajksdjkasdasjk dasjd kjdaskjdsajdasjdas jkdasjdjasdjasd asjkd jassjakdbasjk djasbjdasdsajdsajdjad djkawndan adn nasdasd adnaskldnasknkasna ndkalsdnksandskna klnasd kndkasdk sl a nksalndk lsand klsa nk kandkl askdaskd ks kdnaks dkas dkas sad ndaks nkasnkasnkas lk nkdalsk dnask ns lkdjaanadnans dnsa dlkasn slandak nsdkaks ksdnak snakdnaksnd kasn ksn kdkas nkasn ksan dknksan dksa kldnkas ndklakasn klas nlkan alk kasdnkan kankaslnkas nkan aks klas kasn kas nk nkan kaln aklsn ksl nksad sakln klsadnskan dask lndkasn dkasn dklan kan kdaksn daskl ndkan sdkna skndkas ndkans kasnd askl ndksasn ksadnaksln kdlsan kldasn asklnd klsand klasndk alsn klasn dlka ndkaskldnksaln ksalnd skladn klsand kasnd klas ",
+                artwork.description,
                 style: Theme.of(context)
                     .textTheme
                     .titleMedium

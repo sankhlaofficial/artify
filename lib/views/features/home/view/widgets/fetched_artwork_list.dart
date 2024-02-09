@@ -60,7 +60,10 @@ class FetchedArtworkList extends StatelessWidget {
         ResponsiveGridView(
             gridChildren: allArtworks
                 .map((artwork) => ArtworkTile(artwork: artwork))
-                .toList())
+                .toList()),
+        VerticalSpacer(
+          heightFactor: responsiveView.isMobile ? 1 : 2,
+        ),
       ],
     );
   }

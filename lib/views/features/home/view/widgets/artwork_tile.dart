@@ -11,7 +11,9 @@ class ArtworkTile extends StatelessWidget {
 
     return InkWell(
       onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => const ArtworkDescriptionPage())),
+          builder: (context) => ArtworkDescriptionPage(
+                artwork: artwork,
+              ))),
       child: Container(
         decoration: BoxDecoration(
             border: Border.all(),
@@ -25,11 +27,10 @@ class ArtworkTile extends StatelessWidget {
             ResponsiveRowColumnItem(
               child: Stack(
                 children: [
-                  const CachedImageProvider(
+                  CachedImageProvider(
                     width: 200,
                     height: 200,
-                    networkImageUrl:
-                        'https://th.bing.com/th/id/OIP.5W9ozBJ-JwLYF1HWu4EQjwHaGI?rs=1&pid=ImgDetMain',
+                    networkImageUrl: artwork.artworkImage.imageDisplayUrl,
                   ),
                   Positioned(
                     right: 10,
@@ -43,7 +44,7 @@ class ArtworkTile extends StatelessWidget {
                           border:
                               Border.all(color: AppColor.secondaryBorderColor)),
                       child: Text(
-                        "Paining",
+                        artwork.category,
                         style: Theme.of(context).textTheme.labelSmall,
                       ),
                     ),
@@ -68,7 +69,7 @@ class ArtworkTile extends StatelessWidget {
                     heightFactor: 1,
                   ),
                   Text(
-                    "Vincy Van Gogh ",
+                    artwork.author,
                     style: Theme.of(context).textTheme.displayMedium,
                   )
                 ],

@@ -12,7 +12,7 @@ class ArtService extends BaseService {
     try {
       final response = await Dio().get(url);
       log("initial response is ${response.data['data']}");
-      responseJson = response.data['data'];
+      responseJson = response.data;
     } on SocketException {
       throw FetchDataException('No Internet Connection');
     } catch (error) {

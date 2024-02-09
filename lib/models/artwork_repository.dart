@@ -13,12 +13,15 @@ class ArtworkRepository {
       dynamic response = await _artService.getResponse(value);
 
       log("response is $response");
-      final jsonData = response as List;
+      final jsonData = response['data'] as List;
+      String imageApiUrl = response['config']['iiif_url'];
 
       if (response.isNotEmpty) {
         try {
-          List<Artwork> artList =
-              jsonData.map((tagJson) => Artwork.fromJson(tagJson)).toList();
+          List<Artwork> artList = jsonData
+              .map((tagJson) =>
+                  Artwork.fromJson(json: tagJson, imageApiUrl: imageApiUrl))
+              .toList();
 
           log(artList.toString());
 
