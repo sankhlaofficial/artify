@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:artify/models/api/app_exception.dart';
 import 'package:artify/models/constants/index.dart';
 import 'package:artify/models/entities/artwork.dart';
@@ -39,7 +37,6 @@ class FetchArtworkBloc extends Bloc<FetchArtworkEvent, FetchArtworkState> {
           ));
         });
       } else if (event is ApplyFilters) {
-        print('applying ${event.filtersApplied}');
         List<Artwork> filteredArtworks = [];
 
         if (event.filtersApplied.isNotEmpty) {
@@ -51,9 +48,6 @@ class FetchArtworkBloc extends Bloc<FetchArtworkEvent, FetchArtworkState> {
             }
           }
         }
-
-        log('filters applied are ${event.filtersApplied}');
-        log("filtered artworks are $filteredArtworks");
 
         emit(state.copyWith(
             appliedFilterList: event.filtersApplied,
