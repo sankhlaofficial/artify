@@ -7,6 +7,8 @@ class ArtworkDescriptionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    ResponsiveBreakpointsData responsiveView =
+        ResponsiveBreakpoints.of(context);
     return Scaffold(
       backgroundColor: Colors.transparent,
       extendBodyBehindAppBar: true,
@@ -48,33 +50,43 @@ class ArtworkDescriptionPage extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text(
-                      artwork.title,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge
-                          ?.copyWith(color: AppColor.secondaryTextColor),
-                    ),
-                    const HorizontalSpacer(
-                      widthFactor: 1,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(
-                          AppMeasurements.allSideContainerPadding),
-                      decoration: BoxDecoration(
-                          color: AppColor.boxFillColor,
-                          borderRadius: BorderRadius.circular(
-                              AppMeasurements.borderRadius),
-                          border: Border.all()),
+                    Flexible(
+                      flex: 3,
                       child: Text(
-                        artwork.category,
+                        artwork.title,
                         style: Theme.of(context)
                             .textTheme
-                            .labelSmall
-                            ?.copyWith(color: AppColor.primaryTextColor),
+                            .titleLarge
+                            ?.copyWith(color: AppColor.secondaryTextColor),
+                      ),
+                    ),
+                    Flexible(
+                      child: HorizontalSpacer(
+                        widthFactor: responsiveView.isMobile ? 1 : 2,
+                      ),
+                    ),
+                    Flexible(
+                      child: Container(
+                        padding: const EdgeInsets.all(
+                            AppMeasurements.allSideContainerPadding),
+                        decoration: BoxDecoration(
+                            color: AppColor.boxFillColor,
+                            borderRadius: BorderRadius.circular(
+                                AppMeasurements.borderRadius),
+                            border: Border.all()),
+                        child: Text(
+                          artwork.category,
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelSmall
+                              ?.copyWith(color: AppColor.primaryTextColor),
+                        ),
                       ),
                     )
                   ],
+                ),
+                const VerticalSpacer(
+                  heightFactor: 0.5,
                 ),
                 Text(
                   "   - ${artwork.author}",
