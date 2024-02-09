@@ -10,7 +10,7 @@ class ArtifyHomePage extends StatelessWidget {
         builder: (context, state) {
           if (state is HomePageSuccess) {
             return FetchedArtworkList(
-              allArtworks: state.artList,
+              allArtworks: state.displayedArtList,
               filterList: state.filterList,
             );
           } else if (state is HomePageLoading) {

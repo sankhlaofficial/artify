@@ -7,6 +7,9 @@ class AppColor {
   static const secondaryBorderColor = Colors.white;
   static const primaryIconColor = Colors.black;
   static const iconBackgroundColor = Colors.white;
+  static const containerSelectedBackgroundColor = Colors.black;
+  static const containerBackgroundColor = Colors.white;
+  static const selectedTextColor = Colors.white;
 
   static const PRIMARY = Color(0xFF4764cd);
   static const SECONDARY = Color(0xFFeff2fa);

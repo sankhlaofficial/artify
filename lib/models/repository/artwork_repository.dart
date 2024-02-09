@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:artify/models/api/app_exception.dart';
-import 'package:artify/models/artwork.dart';
+import 'package:artify/models/entities/artwork.dart';
 import 'package:artify/models/services/art_service.dart';
 import 'package:artify/models/services/base_service.dart';
 import 'package:dartz/dartz.dart';

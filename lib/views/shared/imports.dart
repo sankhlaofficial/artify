@@ -1,6 +1,6 @@
 // -----------------IMPORTS--------------------------
 
-import 'package:artify/models/artwork.dart';
+import 'package:artify/models/entities/artwork.dart';
 import 'package:artify/viewmodels/blocs/fetch_artwork/fetch_artwork_bloc.dart';
 import 'package:artify/views/constants/strings.dart';
 import 'package:artify/views/theme/measurements.dart';

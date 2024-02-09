@@ -1,7 +1,7 @@
 import 'package:artify/models/api/app_exception.dart';
-import 'package:artify/models/artwork.dart';
-import 'package:artify/models/artwork_repository.dart';
 import 'package:artify/models/constants/index.dart';
+import 'package:artify/models/entities/artwork.dart';
+import 'package:artify/models/repository/artwork_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +13,8 @@ class FetchArtworkBloc extends Bloc<FetchArtworkEvent, FetchArtworkState> {
   final ArtworkRepository artworkRepository;
 
   FetchArtworkBloc(this.artworkRepository) : super(HomePageInitial()) {
-    on<FetchArtworkEvent>((event, emit) async {
+    on<FetchArtworkEvent>(
+        (FetchArtworkEvent event, Emitter<FetchArtworkState> emit) async {
       if (event is CallArtworkAPI) {
         emit(HomePageLoading());
 
@@ -27,8 +28,32 @@ class FetchArtworkBloc extends Bloc<FetchArtworkEvent, FetchArtworkState> {
             filterList.add(artwork.category);
           }
 
-          emit(HomePageSuccess(artList, filterList.toList()));
+          print('applied filter list is ' + state.appliedFilterList.toString());
+          emit(HomePageSuccess(
+            artList: artList,
+            displayedArtList: artList,
+            filterList: filterList.toList(),
+          ));
         });
+      } else if (event is ApplyFilters) {
+        List<Artwork> filteredArtworks = [];
+
+        if (event.filtersApplied.isNotEmpty) {
+          for (var filter in event.filtersApplied) {
+            for (var art in state.artList) {
+              if (art.category == filter) {
+                filteredArtworks.add(art);
+              }
+            }
+          }
+
+          emit(state.copyWith(
+              appliedFilterList: event.filtersApplied,
+              displayedArtList: filteredArtworks));
+        }
+      } else if (event is RemoveFilters) {
+      } else {
+        //Unknown event handler
       }
     });
   }

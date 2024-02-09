@@ -71,7 +71,7 @@ class ArtworkDescriptionPage extends StatelessWidget {
                 ],
               ),
               Text(
-                "   -${artwork.author}",
+                "   - ${artwork.author}",
                 style: Theme.of(context)
                     .textTheme
                     .titleMedium

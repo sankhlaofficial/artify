@@ -7,15 +7,43 @@ class FilterTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(
-          horizontal: AppMeasurements.horizontalMarginMedium),
-      padding: const EdgeInsets.all(AppMeasurements.allSideContainerPadding),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppMeasurements.borderRadius),
-        border: Border.all(color: AppColor.primaryBorderColor),
+    print('applied filter list is ' +
+        context.read<FetchArtworkBloc>().state.appliedFilterList.toString());
+
+    bool isSelected = context
+        .read<FetchArtworkBloc>()
+        .state
+        .appliedFilterList
+        .contains(filterItem);
+
+    print('isSelected is $isSelected');
+
+    return InkWell(
+      onTap: () {
+        context
+            .read<FetchArtworkBloc>()
+            .add(ApplyFilters(filtersApplied: {filterItem}));
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(
+            horizontal: AppMeasurements.horizontalMarginMedium),
+        padding: const EdgeInsets.all(AppMeasurements.allSideContainerPadding),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? AppColor.containerSelectedBackgroundColor
+              : AppColor.containerBackgroundColor,
+          borderRadius: BorderRadius.circular(AppMeasurements.borderRadius),
+          border: Border.all(color: AppColor.primaryBorderColor),
+        ),
+        child: Center(
+            child: Text(
+          filterItem,
+          style: TextStyle(
+              color: isSelected
+                  ? AppColor.selectedTextColor
+                  : AppColor.primaryTextColor),
+        )),
       ),
-      child: Center(child: Text(filterItem)),
     );
   }
 }
