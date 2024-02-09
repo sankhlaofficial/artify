@@ -10,7 +10,9 @@ class HomePageLoading extends FetchArtworkState {}
 class HomePageSuccess extends FetchArtworkState {
   final List<Artwork> artList;
 
-  HomePageSuccess(this.artList);
+  final List<String> filterList;
+
+  HomePageSuccess(this.artList, this.filterList);
 }
 
 class HomePageError extends FetchArtworkState {

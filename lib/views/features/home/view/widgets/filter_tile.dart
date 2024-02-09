@@ -1,9 +1,9 @@
 part of 'package:artify/views/shared/imports.dart';
 
 class FilterTile extends StatelessWidget {
-  const FilterTile({
-    super.key,
-  });
+  const FilterTile({super.key, required this.filterItem});
+
+  final String filterItem;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class FilterTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppMeasurements.borderRadius),
         border: Border.all(color: AppColor.primaryBorderColor),
       ),
-      child: const Center(child: Text("Photography")),
+      child: Center(child: Text(filterItem)),
     );
   }
 }

@@ -1,9 +1,11 @@
 part of 'package:artify/views/shared/imports.dart';
 
 class FetchedArtworkList extends StatelessWidget {
-  const FetchedArtworkList({super.key, required this.allArtworks});
+  const FetchedArtworkList(
+      {super.key, required this.allArtworks, this.filterList = const []});
 
   final List<Artwork> allArtworks;
+  final List<String> filterList;
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +51,11 @@ class FetchedArtworkList extends StatelessWidget {
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
-              itemCount: 10,
+              itemCount: filterList.length,
               itemBuilder: (context, index) {
-                return const FilterTile();
+                return FilterTile(
+                  filterItem: filterList[index],
+                );
               }),
         ),
         VerticalSpacer(

@@ -9,11 +9,20 @@ class ArtworkDescriptionPage extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.transparent,
+              Colors.black.withOpacity(0.8),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            stops: const [0, 0.5],
+          ),
           image: DecorationImage(
-        fit: BoxFit.cover,
-        image: CachedNetworkImageProvider(artwork.artworkImage
-            .imageDisplayUrl), // a network image or a local image here,
-      )),
+            fit: BoxFit.cover,
+            image: CachedNetworkImageProvider(artwork.artworkImage
+                .imageDisplayUrl), // a network image or a local image here,
+          )),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(

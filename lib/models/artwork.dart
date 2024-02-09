@@ -1,4 +1,5 @@
 import 'package:artify/models/constants/index.dart';
+import 'package:artify/models/helpers/helpers.dart';
 
 class Artwork {
   final int id;
@@ -33,7 +34,7 @@ class Artwork {
             imageDimensionString: iiifDimensionString),
 
         // json['image_id'] ?? '',
-        category: json['classification_title'] ?? '',
+        category: Helpers.capitalize(json['classification_title'] ?? ''),
         imageApiUrl: imageApiUrl);
   }
 }

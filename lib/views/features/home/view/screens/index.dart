@@ -11,6 +11,7 @@ class ArtifyHomePage extends StatelessWidget {
           if (state is HomePageSuccess) {
             return FetchedArtworkList(
               allArtworks: state.artList,
+              filterList: state.filterList,
             );
           } else if (state is HomePageLoading) {
             return const Center(
