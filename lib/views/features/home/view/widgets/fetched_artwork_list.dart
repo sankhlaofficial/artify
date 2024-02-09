@@ -9,40 +9,11 @@ class FetchedArtworkList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     ResponsiveBreakpointsData responsiveView =
         ResponsiveBreakpoints.of(context);
     return Column(
       children: [
-        Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: responsiveView.isMobile ? size.width * 0.05 : 0,
-              vertical: AppMeasurements.verticalPaddingLarge),
-          child: ResponsiveRowColumn(
-            layout: responsiveView.isMobile
-                ? ResponsiveRowColumnType.COLUMN
-                : ResponsiveRowColumnType.ROW,
-            rowMainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ResponsiveRowColumnItem(
-                rowFlex: 1,
-                child: Text(
-                  Strings.appTitle,
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-              ),
-              if (responsiveView.isMobile)
-                const ResponsiveRowColumnItem(
-                  child: VerticalSpacer(),
-                ),
-              const ResponsiveRowColumnItem(
-                rowFlex: 2,
-                child: SearchBar(),
-              ),
-            ],
-          ),
-        ),
+        HomeAppBar(),
         VerticalSpacer(
           heightFactor: responsiveView.isMobile ? 1 : 2,
         ),

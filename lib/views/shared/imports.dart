@@ -25,6 +25,7 @@ part 'package:artify/views/features/home/view/screens/index.dart';
 part 'package:artify/views/features/home/view/widgets/artwork_tile.dart';
 part 'package:artify/views/features/home/view/widgets/fetched_artwork_list.dart';
 part 'package:artify/views/features/home/view/widgets/filter_tile.dart';
+part 'package:artify/views/features/home/view/widgets/home_app_bar.dart';
 part 'package:artify/views/shared/widgets/art_download_button.dart';
 part 'package:artify/views/shared/widgets/cached_image_provider.dart';
 part 'package:artify/views/shared/widgets/responsive_grid_view.dart';
