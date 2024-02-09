@@ -27,7 +27,9 @@ class FetchArtworkBloc extends Bloc<FetchArtworkEvent, FetchArtworkState> {
           Set<String> filterList = {};
 
           for (var artwork in artList) {
-            filterList.add(artwork.category);
+            if (artwork.category.isNotEmpty) {
+              filterList.add(artwork.category);
+            }
           }
 
           emit(HomePageSuccess(
