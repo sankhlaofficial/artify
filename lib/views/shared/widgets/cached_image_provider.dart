@@ -13,8 +13,14 @@ class CachedImageProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       fit: BoxFit.cover,
-      width: width,
-      height: height,
+      imageBuilder: (context, imageProvider) => Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(AppMeasurements.borderRadius),
+          image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+        ),
+      ),
       imageUrl: networkImageUrl,
       placeholder: (BuildContext context, String url) => Container(
         height: height,

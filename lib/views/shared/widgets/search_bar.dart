@@ -10,6 +10,10 @@ class SearchBar extends StatelessWidget {
     return SizedBox(
       height: AppMeasurements.searchBarHeight,
       child: TextField(
+        style: Theme.of(context)
+            .textTheme
+            .titleSmall
+            ?.copyWith(color: AppColor.primaryTextColor),
         onChanged: (String? text) {},
         decoration: const InputDecoration(
           filled: true,

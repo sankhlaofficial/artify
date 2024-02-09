@@ -1,4 +1,4 @@
-import 'package:artify/models/artwork_repository.dart';
+import 'package:artify/models/repository/artwork_repository.dart';
 import 'package:artify/viewmodels/blocs/fetch_artwork/fetch_artwork_bloc.dart';
 import 'package:artify/views/shared/imports.dart';
 import 'package:flutter/material.dart';
