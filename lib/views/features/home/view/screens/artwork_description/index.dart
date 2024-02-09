@@ -70,9 +70,6 @@ class ArtworkDescriptionPage extends StatelessWidget {
                   )
                 ],
               ),
-              const VerticalSpacer(
-                heightFactor: 1,
-              ),
               Text(
                 "   -${artwork.author}",
                 style: Theme.of(context)
