@@ -12,9 +12,8 @@ class ArtworkRepository {
     try {
       dynamic response = await _artService.getResponse(value);
 
-      log("response is $response");
       final jsonData = response['data'] as List;
-      log("js data $jsonData");
+
       String imageApiUrl = response['config']['iiif_url'];
 
       if (response.isNotEmpty) {

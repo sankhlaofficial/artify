@@ -13,10 +13,6 @@ class FetchedArtworkList extends StatelessWidget {
         ResponsiveBreakpoints.of(context);
     return Column(
       children: [
-        HomeAppBar(),
-        VerticalSpacer(
-          heightFactor: responsiveView.isMobile ? 1 : 2,
-        ),
         SizedBox(
           height: AppMeasurements.searchBarHeight,
           child: ListView.builder(

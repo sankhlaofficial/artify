@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:artify/models/api/app_exception.dart';
@@ -11,7 +10,6 @@ class ArtService extends BaseService {
     dynamic responseJson;
     try {
       final response = await Dio().get(url);
-      log("initial response is ${response.data['data']}");
       responseJson = response.data;
     } on SocketException {
       throw FetchDataException('No Internet Connection');

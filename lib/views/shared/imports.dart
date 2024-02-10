@@ -1,8 +1,11 @@
 // -----------------IMPORTS--------------------------
 
+import 'dart:developer';
+
 import 'package:artify/models/entities/artwork.dart';
 import 'package:artify/viewmodels/blocs/fetch_artwork/fetch_artwork_bloc.dart';
 import 'package:artify/views/constants/strings.dart';
+import 'package:artify/views/features/home/view/widgets/loaders/fetched_artwork_list_loader.dart';
 import 'package:artify/views/theme/measurements.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 //App

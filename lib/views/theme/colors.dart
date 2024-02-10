@@ -10,6 +10,7 @@ class AppColor {
   static const containerSelectedBackgroundColor = Colors.black;
   static const containerBackgroundColor = Colors.white;
   static const selectedTextColor = Colors.white;
+  static Color shimmerColor = Colors.grey.withOpacity(0.7);
 
   static const PRIMARY = Color(0xFF4764cd);
   static const SECONDARY = Color(0xFFeff2fa);
