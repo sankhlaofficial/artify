@@ -9,7 +9,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 Future<void> main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(ArtworkAdapter());
-  await Hive.openBox<List<Artwork>>('cacheBox');
+  Hive.registerAdapter(ArtworkImageAdapter());
 
   runApp(const MyApp());
 }

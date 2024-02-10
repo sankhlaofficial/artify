@@ -21,30 +21,40 @@ class FetchArtworkBloc extends Bloc<FetchArtworkEvent, FetchArtworkState> {
       if (event is CallArtworkAPI) {
         emit(HomePageLoading());
 
-        Box<List<Artwork>> cacheData = Hive.box<List<Artwork>>('cacheBox');
+        var cacheBox = await Hive.openBox<List>('cacheBox');
 
-        List<Artwork>? cachedList = cacheData.get('artworkList');
+        var cachedList =
+            cacheBox.get('artworkList', defaultValue: [])?.cast<Artwork>();
 
         log("cached List is $cachedList");
 
-        Either<AppException, List<Artwork>> allArtworks =
-            await artworkRepository.fetchArtworkFromApi(artworkApi);
+        if (cachedList?.isEmpty ?? true) {
+          //store data and emit success from cache data
 
-        allArtworks.fold((failure) => emit(HomePageError(failure)), (artList) {
-          Set<String> filterList = {};
+          Either<AppException, List<Artwork>> allArtworks =
+              await artworkRepository.fetchArtworkFromApi(artworkApi);
 
-          for (var artwork in artList) {
-            if (artwork.category.isNotEmpty) {
-              filterList.add(artwork.category);
+          allArtworks.fold((failure) => emit(HomePageError(failure)),
+              (artList) {
+            cacheBox.put('artworkList', artList);
+
+            Set<String> filterList = {};
+
+            for (var artwork in artList) {
+              if (artwork.category.isNotEmpty) {
+                filterList.add(artwork.category);
+              }
             }
-          }
 
-          emit(HomePageSuccess(
-            artList: artList,
-            displayedArtList: artList,
-            filterList: filterList.toList(),
-          ));
-        });
+            emit(HomePageSuccess(
+              artList: artList,
+              displayedArtList: artList,
+              filterList: filterList.toList(),
+            ));
+          });
+        } else {
+          //check internet connection---  if on save new data and emit success ----else  show last cache data
+        }
       } else if (event is ApplyFilters) {
         List<Artwork> filteredArtworks = [];
 
