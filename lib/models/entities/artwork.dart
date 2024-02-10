@@ -1,14 +1,25 @@
 import 'package:artify/models/constants/index.dart';
 import 'package:artify/models/helpers/helpers.dart';
+import 'package:hive/hive.dart';
 
+part 'artwork.g.dart';
+
+@HiveType(typeId: 0)
 class Artwork {
+  @HiveField(0)
   final int id;
+  @HiveField(1)
   final String title;
+  @HiveField(2)
   final String description;
+  @HiveField(3)
   final String author;
+  @HiveField(4)
   final ArtworkImage artworkImage;
+  @HiveField(5)
   final String category;
 
+  @HiveField(6)
   final String imageApiUrl;
 
   Artwork({
@@ -39,9 +50,13 @@ class Artwork {
   }
 }
 
+@HiveType(typeId: 1)
 class ArtworkImage {
+  @HiveField(0)
   final String imageDisplayUrl;
+  @HiveField(1)
   final String imageApiUrl;
+  @HiveField(2)
   final String imageDimensionString;
 
   ArtworkImage(

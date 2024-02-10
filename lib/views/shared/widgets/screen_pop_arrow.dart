@@ -13,7 +13,7 @@ class ScreenPopArrow extends StatelessWidget {
         margin: const EdgeInsets.all(AppMeasurements.allSideContainerPadding),
         padding: const EdgeInsets.all(AppMeasurements.allSideContainerPadding),
         decoration: BoxDecoration(
-          color: AppColor.iconBackgroundColor,
+          color: AppColor.iconBackgroundColor.withOpacity(0.65),
           border: Border.all(),
           borderRadius: BorderRadius.circular(AppMeasurements.borderRadius),
         ),

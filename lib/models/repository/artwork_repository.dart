@@ -14,6 +14,7 @@ class ArtworkRepository {
 
       log("response is $response");
       final jsonData = response['data'] as List;
+      log("js data $jsonData");
       String imageApiUrl = response['config']['iiif_url'];
 
       if (response.isNotEmpty) {
@@ -33,6 +34,7 @@ class ArtworkRepository {
         throw FetchDataException();
       }
     } catch (error) {
+      print("f $error");
       if (error is BadRequestException || error is UnauthorisedException) {
         rethrow;
       } else {
