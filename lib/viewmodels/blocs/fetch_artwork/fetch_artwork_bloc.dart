@@ -1,13 +1,11 @@
-import 'dart:developer';
-
 import 'package:artify/models/api/app_exception.dart';
 import 'package:artify/models/constants/index.dart';
 import 'package:artify/models/entities/artwork.dart';
 import 'package:artify/models/repository/artwork_repository.dart';
+import 'package:artify/viewmodels/cache/cache_handler.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
 part 'fetch_artwork_event.dart';
@@ -22,51 +20,20 @@ class FetchArtworkBloc extends Bloc<FetchArtworkEvent, FetchArtworkState> {
       if (event is CallArtworkAPI) {
         emit(HomePageLoading());
 
-        var cacheBox = await Hive.openBox<List>('cacheBox');
+        CacheHandler cacheHandler = CacheHandler();
 
-        var cachedList =
-            cacheBox.get('artworkList', defaultValue: [])?.cast<Artwork>();
+        List<Artwork> cachedList = await cacheHandler.getCachedData();
 
-        log("cached List is $cachedList");
+        bool internetConnectivity =
+            await InternetConnection().hasInternetAccess;
 
-        if (cachedList?.isEmpty ?? true) {
-          //store data and emit success from cache data
-
-          Either<AppException, List<Artwork>> allArtworks =
-              await artworkRepository.fetchArtworkFromApi(artworkApi);
-
-          allArtworks.fold((failure) => emit(HomePageError(failure)),
-              (artList) {
-            cacheBox.put('artworkList', artList);
-
-            Set<String> filterList = {};
-
-            for (var artwork in artList) {
-              if (artwork.category.isNotEmpty) {
-                filterList.add(artwork.category);
-              }
-            }
-
-            emit(HomePageSuccess(
-              artList: artList,
-              displayedArtList: artList,
-              filterList: filterList.toList(),
-            ));
-          });
-        } else {
-          //check internet connection---  if on save new data and emit success ----else  show last cache data¸
-
-          //checking internet connection
-
-          bool result = await InternetConnection().hasInternetAccess;
-          if (result == true) {
-            print('YAY! Free cute dog pics!');
+        if (cachedList.isEmpty) {
+          if (internetConnectivity) {
             Either<AppException, List<Artwork>> allArtworks =
                 await artworkRepository.fetchArtworkFromApi(artworkApi);
-
             allArtworks.fold((failure) => emit(HomePageError(failure)),
                 (artList) {
-              cacheBox.put('artworkList', artList);
+              cacheHandler.saveDataToCache(artList);
 
               Set<String> filterList = {};
 
@@ -83,9 +50,32 @@ class FetchArtworkBloc extends Bloc<FetchArtworkEvent, FetchArtworkState> {
               ));
             });
           } else {
-            print(
-                'No internet :( Reason: ${await InternetConnection().lastTryResults}');
+            emit(HomePageError(FetchDataException("No network found")));
+          }
+        } else {
+          if (internetConnectivity) {
+            Either<AppException, List<Artwork>> allArtworks =
+                await artworkRepository.fetchArtworkFromApi(artworkApi);
 
+            allArtworks.fold((failure) => emit(HomePageError(failure)),
+                (artList) {
+              cacheHandler.saveDataToCache(artList);
+
+              Set<String> filterList = {};
+
+              for (var artwork in artList) {
+                if (artwork.category.isNotEmpty) {
+                  filterList.add(artwork.category);
+                }
+              }
+
+              emit(HomePageSuccess(
+                artList: artList,
+                displayedArtList: artList,
+                filterList: filterList.toList(),
+              ));
+            });
+          } else {
             Set<String> filterList = {};
             for (var artwork in (cachedList ?? [])) {
               if (artwork.category.isNotEmpty) {
