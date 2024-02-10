@@ -20,7 +20,7 @@ class AppTheme {
       textTheme: TextTheme(
         titleLarge: GoogleFonts.getFont('Outfit',
             fontSize: 24,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w600,
             color: AppColor.primaryTextColor),
         labelSmall: GoogleFonts.getFont('Outfit',
             fontSize: 12,

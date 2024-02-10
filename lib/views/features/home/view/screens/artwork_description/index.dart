@@ -66,6 +66,7 @@ class ArtworkDescriptionPage extends StatelessWidget {
                       ),
                     ),
                     Flexible(
+                      flex: 2,
                       child: Container(
                         padding: const EdgeInsets.all(
                             AppMeasurements.allSideContainerPadding),
