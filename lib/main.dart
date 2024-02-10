@@ -1,10 +1,16 @@
+import 'package:artify/models/entities/artwork.dart';
 import 'package:artify/models/repository/artwork_repository.dart';
 import 'package:artify/viewmodels/blocs/fetch_artwork/fetch_artwork_bloc.dart';
 import 'package:artify/views/shared/imports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+Future<void> main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(ArtworkAdapter());
+  await Hive.openBox<List<Artwork>>('cacheBox');
+
   runApp(const MyApp());
 }
 

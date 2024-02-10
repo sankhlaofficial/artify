@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:artify/models/api/app_exception.dart';
 import 'package:artify/models/constants/index.dart';
 import 'package:artify/models/entities/artwork.dart';
@@ -5,6 +7,7 @@ import 'package:artify/models/repository/artwork_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
 
 part 'fetch_artwork_event.dart';
 part 'fetch_artwork_state.dart';
@@ -17,6 +20,12 @@ class FetchArtworkBloc extends Bloc<FetchArtworkEvent, FetchArtworkState> {
         (FetchArtworkEvent event, Emitter<FetchArtworkState> emit) async {
       if (event is CallArtworkAPI) {
         emit(HomePageLoading());
+
+        Box<List<Artwork>> cacheData = Hive.box<List<Artwork>>('cacheBox');
+
+        List<Artwork>? cachedList = cacheData.get('artworkList');
+
+        log("cached List is $cachedList");
 
         Either<AppException, List<Artwork>> allArtworks =
             await artworkRepository.fetchArtworkFromApi(artworkApi);
