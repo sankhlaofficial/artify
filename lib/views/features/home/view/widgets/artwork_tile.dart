@@ -15,6 +15,7 @@ class ArtworkTile extends StatelessWidget {
                 artwork: artwork,
               ))),
       child: Container(
+        width: responsiveView.isMobile ? 200 : 500,
         decoration: BoxDecoration(
             border: Border.all(),
             borderRadius: BorderRadius.circular(AppMeasurements.borderRadius)),
@@ -60,10 +61,14 @@ class ArtworkTile extends StatelessWidget {
               padding:
                   const EdgeInsets.all(AppMeasurements.allSideContainerPadding),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    artwork.title,
-                    style: Theme.of(context).textTheme.headlineMedium,
+                  SizedBox(
+                    width: 180,
+                    child: Text(
+                      artwork.title,
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
                   ),
                   const VerticalSpacer(
                     heightFactor: 1,

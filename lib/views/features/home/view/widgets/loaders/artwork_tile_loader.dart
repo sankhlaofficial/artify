@@ -27,8 +27,8 @@ class ArtworkTileLoader extends StatelessWidget {
           children: [
             ResponsiveRowColumnItem(
               child: Container(
-                width: 180,
-                height: 180,
+                height: 200,
+                width: 200,
                 color: AppColor.shimmerColor,
               ),
             ),
