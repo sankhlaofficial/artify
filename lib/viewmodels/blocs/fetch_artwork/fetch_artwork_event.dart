@@ -10,3 +10,9 @@ class ApplyFilters extends FetchArtworkEvent {
 
   ApplyFilters({this.filtersApplied = const {}});
 }
+
+class SearchArtwork extends FetchArtworkEvent {
+  final String query;
+
+  SearchArtwork({required this.query});
+}

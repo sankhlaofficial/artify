@@ -3,6 +3,7 @@ import 'package:artify/models/constants/index.dart';
 import 'package:artify/models/entities/artwork.dart';
 import 'package:artify/models/repository/artwork_repository.dart';
 import 'package:artify/viewmodels/cache/cache_handler.dart';
+import 'package:artify/viewmodels/services/search_service.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -108,6 +109,13 @@ class FetchArtworkBloc extends Bloc<FetchArtworkEvent, FetchArtworkState> {
             displayedArtList: event.filtersApplied.isEmpty
                 ? state.artList
                 : filteredArtworks));
+      } else if (event is SearchArtwork) {
+        SearchServices searchService = SearchServices();
+
+        List<Artwork> searchedArtworks =
+            searchService.filterSearchResults(event.query, state.artList);
+
+        emit(state.copyWith(displayedArtList: searchedArtworks));
       } else {
         //Unknown event handler
       }
