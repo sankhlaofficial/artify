@@ -14,7 +14,12 @@ class SearchBar extends StatelessWidget {
             .textTheme
             .titleSmall
             ?.copyWith(color: AppColor.primaryTextColor),
-        onChanged: (String? text) {},
+        onChanged: (String? text) {
+          if (text != null) {
+            print("searching $text");
+            context.read<FetchArtworkBloc>().add(SearchArtwork(query: text));
+          }
+        },
         decoration: const InputDecoration(
           filled: true,
           hintText: "Search for Items",

@@ -1,7 +1,5 @@
 // -----------------IMPORTS--------------------------
 
-import 'dart:developer';
-
 import 'package:artify/models/entities/artwork.dart';
 import 'package:artify/viewmodels/blocs/fetch_artwork/fetch_artwork_bloc.dart';
 import 'package:artify/views/constants/strings.dart';

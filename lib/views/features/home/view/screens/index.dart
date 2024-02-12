@@ -10,7 +10,6 @@ class ArtifyHomePage extends StatelessWidget {
     return Scaffold(
         body: RefreshIndicator(
       onRefresh: () async {
-        log("refreshed");
         context.read<FetchArtworkBloc>().add(CallArtworkAPI());
       },
       child: SafeArea(
